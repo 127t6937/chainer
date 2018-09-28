@@ -6,12 +6,13 @@ RUN apt-get update -y && \
     python3-pip \
     python3-wheel \
     python3-setuptools && \
-    openssh-server \
-    
-    
+  
     rm -rf /var/lib/apt/lists/* /var/cache/apt/archives/*
 
 RUN pip3 install --no-cache-dir cupy-cuda80==5.0.0rc1 chainer==5.0.0rc1
+
+
+RUN apt-get -y install openssh-server
 
 RUN mkdir /var/run/sshd
 RUN echo 'root:screencast' | chpasswd
